@@ -11,6 +11,8 @@ env:
   - TOXENV=py34
 
 install:
-  - "pip install tox --use-mirrors"
-
+  - pip install tox
+  - if [[ "${TOXENV}" == "py32" ]]; then
+      pip install "virtualenv<14.0" ;
+    fi
 script: tox
